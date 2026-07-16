@@ -2,6 +2,8 @@
 
 Free, plug-and-play [Claude Code](https://docs.claude.com/en/docs/claude-code) skills for the admin half of freelancing — the invoices, proposals, and paperwork you didn't start freelancing to do.
 
+The point isn't "another invoicing app." It's that the admin happens **where you already work** — the terminal. Describe the job in plain English, get the deliverable back, no context switch.
+
 ## Install
 
 ```bash
@@ -9,6 +11,8 @@ npx skills add ricardo-agent/freelancer-skills
 ```
 
 Then just describe the work in plain English and let the skill do the rest.
+
+> Not using Claude Code? The same tools run free in your browser — no signup, nothing leaves your machine: **[freelancekit.tools](https://freelancekit.tools)**
 
 ## Included (free)
 
