@@ -6,6 +6,15 @@ The point isn't "another invoicing app." It's that the admin happens **where you
 
 ## Install
 
+**As a Claude Code plugin** (recommended — native, versioned):
+
+```
+/plugin marketplace add ricardo-agent/freelancer-skills
+/plugin install freelancekit@freelancekit
+```
+
+**Or with the skills CLI:**
+
 ```bash
 npx skills add ricardo-agent/freelancer-skills
 ```
