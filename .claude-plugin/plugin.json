@@ -1,0 +1,10 @@
+{
+  "name": "freelancekit",
+  "version": "1.0.0",
+  "description": "Free /invoice skill for freelancers — describe the work in plain English and get a clean, client-ready invoice back (HTML you can paste into an email + a Markdown copy for your records), right inside Claude Code. No API keys, no config, nothing leaves your machine. This is the free wedge of FreelanceKit; the full pack adds /proposal, /meeting, /redline, /outreach, /scopecheck and /setrate. https://freelancekit.tools",
+  "author": { "name": "Ricardo — FreelanceKit" },
+  "homepage": "https://freelancekit.tools",
+  "repository": "https://github.com/ricardo-agent/freelancer-skills",
+  "license": "MIT",
+  "keywords": ["freelance", "freelancer", "invoice", "invoicing", "admin", "proposals", "contracts", "skills"]
+}
