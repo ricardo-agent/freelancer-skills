@@ -1,0 +1,13 @@
+{
+  "name": "freelancekit",
+  "owner": { "name": "Ricardo — FreelanceKit", "url": "https://freelancekit.tools" },
+  "description": "FreelanceKit — Claude Code skills for the freelance admin grind: invoices, proposals, contracts, outreach, rate math. Free /invoice skill included; the full 7-skill pack is at freelancekit.tools.",
+  "plugins": [
+    {
+      "name": "freelancekit",
+      "source": "./",
+      "version": "1.0.0",
+      "description": "Turn a plain-English description of freelance work into a clean, client-ready invoice (HTML + Markdown), right in Claude Code — the free skill from FreelanceKit. The full pack adds proposals, contract red-flagging, cold outreach, scope-checks and rate math: https://freelancekit.tools"
+    }
+  ]
+}
