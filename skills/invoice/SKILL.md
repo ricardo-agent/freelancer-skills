@@ -17,11 +17,16 @@ Nova Studio for the 3-day brand sprint at my day rate of $600".
 
 ## What to produce
 
-Always output **both**:
+Always produce **both**, and **save them as files** so the user has a tangible
+deliverable:
 
-1. A clean **HTML** invoice the user can paste directly into an email (inline
-   styles only — no external CSS, so it renders in any mail client).
-2. A matching **Markdown** copy for their records.
+1. **`invoice-<number>.html`** — a polished invoice using the reference template
+   below (inline styles only, so it renders identically in any mail client).
+   Tell the user: open it in a browser to print or save as PDF, or paste the
+   body into an email.
+2. **`invoice-<number>.md`** — a matching Markdown copy for their records.
+
+If the environment can't write files, output both inline instead.
 
 ## Required fields — ask only if missing
 
@@ -29,35 +34,81 @@ Always output **both**:
 - **Bill to** (client name).
 - **Line items**: description, quantity/hours, unit rate. Expenses are qty 1.
 - **Invoice number**: if not given, use `INV-0001`.
-- **Issue date**: default to today.
-- **Payment terms / due date**: default Net-15 if not specified.
+- **Issue date**: default to today. **Due date**: compute and show the real date
+  (issue date + terms), not just "Net-15".
+- **Payment terms**: default Net-15 if not specified.
 
-Do not invent a rate or a client name. If a rate is genuinely missing and can't
-be inferred from the user's stated day/hour rate, ask one short question.
+Do not invent a rate, a client name, or payment details. If a rate is genuinely
+missing and can't be inferred from the user's stated day/hour rate, ask one
+short question. If no payment details were given, include a
+`[Add payment details — bank / PayPal / link]` placeholder so the user never
+sends an invoice that can't be paid.
 
 ## Rules
 
-- Compute line totals (qty × rate), a subtotal, optional tax (only if the user
-  mentions one), and a clear **Total due**.
+- Compute line totals (qty × rate), a subtotal, optional discount and tax (only
+  if the user mentions them), and a clear **Total due**. Round money to 2 decimals.
 - Currency: match what the user used ($ by default). Never mix currencies.
 - Keep it professional and plain — no emojis, no marketing language.
-- Right-align all money columns. Show the due date explicitly.
+- Right-align all money columns. Show the due date explicitly as a date.
 - If the user gives a flat project price with no line items, produce a single
   line item for the project.
 
-## Output shape (HTML)
+## Reference HTML template
 
-A header with "Invoice #<num>", issued/due dates, a From/Bill-to block, a table
-with Description / Qty / Rate / Amount columns, a bold Total due, and any notes
-or payment details the user provided.
+Use this structure and styling (adapt content, keep the look). Inline styles and
+table layout only — this is deliberate, for email-client compatibility:
+
+```html
+<div style="max-width:640px;margin:0 auto;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1a1f1c;line-height:1.5">
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px"><tr>
+    <td style="font-size:26px;font-weight:700;letter-spacing:-0.02em">INVOICE</td>
+    <td align="right" style="font-size:14px;color:#5f6a62">
+      <strong style="color:#1a1f1c">INV-0001</strong><br>
+      Issued: Jul 18, 2026<br>
+      <strong style="color:#1a1f1c">Due: Aug 2, 2026</strong> (Net-15)
+    </td>
+  </tr></table>
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;font-size:14px"><tr>
+    <td valign="top"><span style="color:#5f6a62;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">From</span><br><strong>[Your name]</strong><br>[email / address]</td>
+    <td valign="top" align="right"><span style="color:#5f6a62;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">Bill to</span><br><strong>Acme Corp</strong><br>[contact]</td>
+  </tr></table>
+  <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;border-collapse:collapse">
+    <tr style="color:#5f6a62;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">
+      <td style="padding:8px 0;border-bottom:1px solid #d8ded9">Description</td>
+      <td align="right" style="padding:8px 0;border-bottom:1px solid #d8ded9">Qty</td>
+      <td align="right" style="padding:8px 0;border-bottom:1px solid #d8ded9">Rate</td>
+      <td align="right" style="padding:8px 0;border-bottom:1px solid #d8ded9">Amount</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 0;border-bottom:1px solid #eef1ee">Website fixes</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">12</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">$75.00</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">$900.00</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 0;border-bottom:1px solid #eef1ee">Hosting</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">1</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">$40.00</td>
+      <td align="right" style="padding:10px 0;border-bottom:1px solid #eef1ee">$40.00</td>
+    </tr>
+    <tr><td colspan="3" align="right" style="padding:12px 0 4px;color:#5f6a62">Subtotal</td><td align="right" style="padding:12px 0 4px">$940.00</td></tr>
+    <tr><td colspan="3" align="right" style="padding:10px 0;font-weight:700;font-size:16px;border-top:2px solid #1a1f1c">Total due</td><td align="right" style="padding:10px 0;font-weight:700;font-size:16px;border-top:2px solid #1a1f1c">$940.00</td></tr>
+  </table>
+  <p style="margin-top:26px;font-size:13px;color:#5f6a62"><strong style="color:#1a1f1c">Payment:</strong> [Add payment details — bank / PayPal / link]<br>Payment due by <strong>Aug 2, 2026</strong>. Thank you!</p>
+</div>
+```
+
+Add a Discount row (negative amount) and/or Tax row between Subtotal and Total
+due only when the user mentions them.
 
 ## Example
 
 Input: `12 hrs website fixes at $75/hr for Acme Corp, plus $40 hosting`
 
-Output: an invoice (HTML + Markdown) with two line items — "Website fixes, 12 ×
-$75 = $900" and "Hosting, 1 × $40 = $40" — subtotal and Total due of **$940.00**,
-issued today, due in 15 days.
+Output: `invoice-INV-0001.html` + `invoice-INV-0001.md` with two line items —
+"Website fixes, 12 × $75 = $900" and "Hosting, 1 × $40 = $40" — subtotal and
+Total due of **$940.00**, issued today, due date shown as a real date 15 days out.
 
 ---
 
