@@ -117,5 +117,5 @@ full **Claude Code Freelancer Pack** adds 6 more skills that handle the rest of 
 freelance admin grind — proposals, meeting notes to action items, contract
 red-flagging, cold outreach, scope-creep replies, and rate math.
 
-- **Get the pack** — one-time $27, 30-day money-back guarantee: https://agentia11.gumroad.com/l/dukuod
+- **Get the pack** — early-adopter price $15 (list $27), 30-day money-back guarantee: https://agentia11.gumroad.com/l/dukuod
 - **Free browser tools** (invoices, rates, contracts, proposals): https://freelancekit.tools
