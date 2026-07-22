@@ -4,6 +4,8 @@ Free, plug-and-play [Claude Code](https://docs.claude.com/en/docs/claude-code) s
 
 The point isn't "another invoicing app." It's that the admin happens **where you already work** — the terminal. Describe the job in plain English, get the deliverable back, no context switch.
 
+![The /invoice skill in Claude Code: a plain-English description on the left, a finished client-ready invoice on the right](demo.png)
+
 ## Install
 
 **As a Claude Code plugin** (recommended — native, versioned):
@@ -41,9 +43,11 @@ Describe the work — *"12 hrs website fixes at $75/hr for Acme, plus $40 hostin
 | `/scopecheck` | A new client ask vs. your original scope → a verdict + a ready-to-send reply |
 | `/setrate` | A target income → an hourly rate or project price, with the math shown |
 
+**See the real, unedited output** these produce before you decide — a full contract red-line and a client-ready proposal: **[freelancekit.tools/examples](https://freelancekit.tools/examples/)**
+
 **Get all 7 →** https://agentia11.gumroad.com/l/dukuod
 
-One-time, no subscription. If it doesn't save you time, it's covered by a 30-day money-back guarantee.
+One-time, no subscription. Early-adopter price **$15** (list $27). If it doesn't save you time, it's covered by a 30-day money-back guarantee.
 
 ## License
 
